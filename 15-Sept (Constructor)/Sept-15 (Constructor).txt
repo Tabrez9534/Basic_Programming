@@ -1,0 +1,651 @@
+BankAccountTester
+Create a class BankAccount with fields for name, accountNumber (auto-generated), and balance.
+Use a static variable to generate unique account numbers starting from 1001.
+Use a constructor to initialize the name and initial deposit.
+Include a method displayAccount() to print the account details.
+
+Class Name:
+BankAccount
+
+Instance Variables:
+- name (String)
+- balance (double)
+- accountNumber (int)
+- static nextAccountNumber (int) initialized to 1001.
+
+Constructor:
+- BankAccount(String name, double balance)
+
+Method:
+- displayAccount() → prints account details.
+
+Main Class:
+- BankMain
+
+Input Format:
+
+First  line just take an integer input for how many objects you want (E.g 1,2,3) based on the test cases execute it.
+Name (String)
+Initial deposit (double)
+
+Output Format:
+AccountHolder: <name>, AccountNo: <accountNumber>, Balance: <balance>
+
+Note:
+Use Scanner with next() for String input.
+
+Sample Input
+John
+500
+Sample Output
+AccountHolder: John, AccountNo: 1001, Balance: 500.0
+
+
+                                                 Answer
+=======================================================================================================
+
+
+
+
+
+import java.util.Scanner;
+class BankAccount{
+
+    String name;
+    
+    double balance;
+    int accountNumber;
+    static int nextAccountNumber = 1001;
+
+    BankAccount(String name, double balance){
+        this.name = name;
+        this.balance = balance;
+    }
+
+    public  void displayAccount(){
+        System.out.println("AccountHolder: "+name+", AccountNo: "+ nextAccountNumber+ ", Balance: " +balance);
+    }
+    
+    public static void main(String[]args){
+        Scanner sc = new Scanner (System.in);
+        int n = sc.nextInt();
+
+       for(int i = 1; i<=n ;i++){
+        String name = sc.next();
+        double initialDeposite = sc.nextDouble();
+        BankAccount user1 = new BankAccount(name,initialDeposite);
+
+        
+        // BankAccount B=new  user1 BankAccount(name , balance);
+        user1.displayAccount();
+        nextAccountNumber++;
+       }
+       
+
+    }
+
+}
+
+
+
+
+
+ ============================================================ Questions - 2 ============================================== 
+Car_Rental_Service
+Create a class CarRental with a constructor to initialize carName, dailyRate, and number of days.
+Add a method getTotalCost() and another method showRentalDetails() to display rental summary.
+
+Class Name:
+CarRental
+
+Instance Variables:
+- carName (String)
+- dailyRate (double)
+- days (int)
+
+Constructor:
+- CarRental(String carName, double dailyRate, int days)
+
+Methods:
+- getTotalCost() → returns dailyRate × days
+- showRentalDetails() → prints rental details
+
+Main Class:
+- CarMain
+
+Input Format:
+Car Name (String)
+Daily Rate (double)
+Number of Days (int)
+
+Output Format:
+Car: <carName>, Days: <days>, Total Cost: <totalCost>
+
+Note:
+Use Scanner with next() for String input.
+Sample Input
+ToyotaCamry
+45
+3
+Sample Output
+Car: ToyotaCamry, Days: 3, Total Cost: 135.0
+
+
+
+========================================================  Answer  ===================================================
+import java.util.Scanner;
+
+class CarMain{
+    public static void main(String[]args){
+        Scanner sc = new Scanner (System.in);
+        String name = sc.next();
+        double dailyRate = sc.nextDouble();
+        int days = sc.nextInt();
+        CarRental user = new CarRental(name , dailyRate , days);
+
+      user.showRentalDetails();
+
+    }
+}
+class CarRental{
+    String carName;
+    double dailyRate;
+    int days;
+
+   CarRental(String carName , double dailyRate , int days){
+    this.carName = carName;
+    this.dailyRate = dailyRate;
+    this.days = days;
+   }
+
+   public double getotalCost(){
+      return dailyRate * days;
+   }
+   public void showRentalDetails(){
+    System.out.println("Car: " +carName + ", Days: "+days+", Total Cost: "+getotalCost());
+      
+   }
+
+
+}
+
+
+========================================================= Qustions - 3 ================================================
+Student_Grade_System
+Create a class Student with a constructor that takes name and three subject marks.
+Add a method getAverage() and getGrade() (A for >=85, B for >=70, else C).
+Add a method displayResult() to show the name, average, and grade.
+
+Class Name:
+Student
+
+Instance Variables:
+- name (String)
+- mark1 (int)
+- mark2 (int)
+- mark3 (int)
+
+Constructor:
+- Student(String name, int mark1, int mark2, int mark3)
+
+Methods:
+- getAverage() → returns average marks
+- getGrade() → returns grade
+- displayResult() → prints result
+
+Main Class:
+- StudentMain
+
+Input Format:
+Name (String)
+Three subject marks (int)
+
+Output Format:
+Student: <name>, Average: <average>, Grade: <grade>
+
+Note:
+Use Scanner with next() for String input.
+Sample Input
+Lily
+90
+85
+88
+Sample Output
+Student: Lily, Average: 87.666..., Grade: A
+
+
+=====================================================Answer=============================================
+import java.util.Scanner;
+
+
+class StudentMain{
+    public static void main(String[]args){
+
+        Scanner sc = new Scanner(System.in);
+         String name = sc.next();
+        int mark1 = sc.nextInt();
+        int mark2 = sc.nextInt();
+        int mark3 = sc.nextInt();
+        Student stu1 = new Student(name,mark1,mark2,mark3);
+        
+       
+        stu1.displayResult();
+
+
+
+    }
+}
+class Student{
+    String name;
+    int mark1;
+    int mark2;
+    int mark3;
+
+    Student(String name , int mark1 , int mark2 , int mark3){
+        this.name = name;
+        this.mark1 = mark1;
+        this.mark2 = mark2;
+        this.mark3 = mark3;
+
+    }
+    public double getAverage(){
+
+        double average =(float)(mark1+mark2+mark3)/3.0f;
+        return average;
+    }
+    public char getGrade(){
+       double average1 = getAverage();
+       if( average1 >= 85 ) {
+        return 'A';
+       }
+        else if(average1 >= 70)
+        {
+            return 'B';
+        }
+
+        else return 'C';
+       } 
+    
+    
+    public void displayResult(){
+        System.out.print("Student: "+name);
+        System.out.printf(", Average: %.1f" , getAverage()); 
+        System.out.print(", Grade: "+getGrade());
+
+        
+    }
+}
+
+
+
+========================================================= Qustions - 4 ================================================
+
+import java.util.Scanner;
+
+class FlightMain{
+
+    public static void main(String[]args){
+    Scanner sc = new Scanner (System.in);
+
+    String name = sc.next();
+    String destination = sc.next();
+    String SeatClass = sc.next();
+    FlightTicket person1 = new FlightTicket(name,destination,SeatClass);
+    person1.TicketSummary();
+
+    
+}
+}
+
+
+
+class FlightTicket{
+    String passangeName;
+    String destination;
+    String seatClass;
+
+    FlightTicket(String passangeName , String destination ,String seatClass){
+        this.passangeName = passangeName;
+        this.destination = destination;
+        this.seatClass = seatClass;
+    }
+    public void TicketSummary(){
+        System.out.println("Passenger: "+passangeName+", Destination: "+destination+", Class: "+seatClass);
+    }
+}
+
+
+=====================================================Answer=============================================
+import java.util.Scanner;
+
+class FlightMain{
+
+    public static void main(String[]args){
+    Scanner sc = new Scanner (System.in);
+
+    String name = sc.next();
+    String destination = sc.next();
+    String SeatClass = sc.next();
+    FlightTicket person1 = new FlightTicket(name,destination,SeatClass);
+    person1.TicketSummary();
+
+    
+}
+}
+
+
+
+class FlightTicket{
+    String passangeName;
+    String destination;
+    String seatClass;
+
+    FlightTicket(String passangeName , String destination ,String seatClass){
+        this.passangeName = passangeName;
+        this.destination = destination;
+        this.seatClass = seatClass;
+    }
+    public void TicketSummary(){
+        System.out.println("Passenger: "+passangeName+", Destination: "+destination+", Class: "+seatClass);
+    }
+}
+
+
+========================================================= Qustions - 5 ================================================
+
+Movie_Ticket_Booking_System
+Create a class Ticket with fields movieName, seatNumber, and price.
+Use a constructor to initialize all fields.
+Add a method printTicket() to display ticket details.
+
+Class Name:
+Ticket
+
+Instance Variables:
+- movieName (String)
+- seatNumber (String)
+- price (double)
+
+Constructor:
+- Ticket(String movieName, String seatNumber, double price)
+
+Method:
+- printTicket() → prints ticket details.
+
+Main Class:
+- TicketMain
+
+Input Format:
+Movie name (String)
+Seat number (String)
+Price (double)
+
+Output Format:
+Movie: <movieName>, Seat: <seatNumber>, Price: <price>
+
+Note:
+Use Scanner with next() for String input.
+
+
+
+===================================================== Answer =============================================
+
+import java.util.Scanner;
+
+
+class TicketMain{
+    public static void main(String[]args){
+    Scanner sc = new Scanner (System.in);
+    String movieName = sc .next();
+    String seatNumber = sc.next();
+    double price = sc.nextDouble();
+    Ticket person = new Ticket(movieName,seatNumber,price);
+    person.TicketDetails();
+
+    }
+}
+
+class Ticket{
+    String movieName;
+    String seatNumber;
+    double price;
+    Ticket(String movieName , String seatNumber , double price){
+        this.movieName = movieName;
+        this.seatNumber = seatNumber;
+        this.price = price;
+
+    }
+    public void TicketDetails(){
+        System.out.println("Movie: "+movieName+", Seat: "+seatNumber+", Price: "+price);
+    }
+
+}
+
+
+========================================================= Qustions - 6 ================================================
+
+
+
+
+EmployeeSalarySlip
+Create a class Employee that stores name, id, and monthlySalary.
+Use a constructor to initialize these values.
+Add a method calculateAnnualSalary() and a method displaySalarySlip() to show name, ID, and annual salary.
+
+Class Name:
+Employee
+
+Instance Variables:
+- name (String)
+- id (int)
+- monthlySalary (double)
+
+Constructor:
+- Employee(String name, int id, double monthlySalary)
+
+Methods:
+- calculateAnnualSalary() → returns monthlySalary × 12
+- displaySalarySlip() → prints employee details
+
+Main Class:
+- EmployeeMain
+
+Input Format:
+Name (String)
+ID (int)
+Monthly Salary (double)
+
+Output Format:
+Employee: <name>, ID: <id>, Annual Salary: <annualSalary>
+
+Note:
+Use Scanner with next() for String input.
+Sample Input
+Michael
+101
+4000
+Sample Output
+Employee: Michael, ID: 101, Annual Salary: 48000.0
+
+
+
+
+
+
+import java.util.Scanner;
+
+class EmployeeMain{
+    public static void main(String[]args){
+    Scanner sc = new Scanner (System.in);
+    String Employee = sc.next();
+    int id = sc.nextInt();
+    double monthlySalary = sc.nextDouble();
+
+    Employee user1 = new Employee(Employee, id , monthlySalary );
+    user1.displaySalarySlip();
+
+   }
+}
+
+class Employee{
+    String name;
+    int id;
+    double monthlySalary;
+
+    Employee(String name , int id , double monthlySalary){
+        this.name = name;
+        this.id = id;
+        this.monthlySalary = monthlySalary;
+    }
+    public double calculateAnnualSalary(){
+        return monthlySalary * 12;
+
+    }
+
+    public void displaySalarySlip(){
+        System.out.println("Employee: "+name+", ID: "+id+", Annual Salary: "+calculateAnnualSalary());
+    }
+
+}
+
+
+========================================================= Qustions - 7 ================================================
+
+Online_Shopping_Cart
+Create a class Product that stores the name, price, and quantity of a product.
+Use a constructor to initialize these values and write a method getTotalPrice() that returns
+the total price (price × quantity).
+Add a method display() to print the product name and total price.
+
+Class Name:
+Product
+
+Instance Variables:
+- name (String)
+- price (double)
+- quantity (int)
+
+Constructor:
+- Product(String name, double price, int quantity)
+
+Methods:
+- getTotalPrice() → returns price × quantity.
+- display() → prints the product name and total price.
+
+Main Class:
+- ShoppingMain → contains the main method.
+
+Input Format:
+Product name (String)
+Price (double)
+Quantity (int)
+
+Output Format:
+Product: <name>, Total Price: <total>
+
+Note:
+Use Scanner with next() for String input.
+Sample Input
+Laptop
+800
+1
+Sample Output
+Product: Laptop, Total Price: 800.0
+
+
+===================================================== Answer =============================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================================================= Qustions - 8 ================================================
+
+
+Library_Book_Management
+You are building a system for a library. Each book has a title, an author, and a unique ISBN.
+Write a program to create a class Book with a constructor to initialize these values.
+Add a method display() to print the book details.
+
+Class Name:
+Book
+
+Instance Variables:
+- title (String)
+- author (String)
+- isbn (String)
+
+Constructor:
+- Book(String title, String author, String isbn) → initializes the instance variables.
+
+Method:
+- display() → prints the book details.
+
+Main Class:
+- LibraryMain → contains the main method.
+- In the main method, instantiate Book objects and invoke the display() method.
+
+Input Format:
+First word: Book title (String)
+Second word: Author name (String)
+Third word: ISBN (String)
+
+
+Output Format:
+Title: <title>, Author: <author>, ISBN: <isbn>
+
+Note:
+Use Scanner with next() method for reading string inputs.
+Sample Input
+JavaBasics
+Alice
+ISBN001
+Sample Output
+Title: JavaBasics, Author: Alice, ISBN: ISBN001
+Constraints:
+Title, author, and ISBN must not be empty.
+
+
+====================================================== Answer ===================================================
+import java.util.Scanner;
+class Library{
+    public static void main(String[]args){
+        Scanner sc = new Scanner(System.in);
+        String title = sc.next();
+        String author = sc.next();
+        String isbn = sc.next();
+        Book Book1 = new Book(title , author , isbn);
+        Book1.displayDetails();
+    }
+}
+
+class Book{
+    String title;
+    String author;
+    String isbn;
+    Book(String title , String author , String isbn){
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+    }
+
+    public  void displayDetails(){
+        System.out.println("Title: "+title+ ", Author: "+author+", ISBN: "+isbn);
+    }
+}
+
